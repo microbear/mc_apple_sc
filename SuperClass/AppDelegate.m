@@ -5,6 +5,7 @@
 //  Created by xiongwei on 13-5-29.
 //
 //
+#import <RestKit/RestKit.h>
 
 #import "AppDelegate.h"
 
