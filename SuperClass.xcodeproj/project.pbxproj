@@ -64,6 +64,15 @@
 		A5EF7ACF17577AA700598899 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A5EF7ACE17577AA700598899 /* libicucore.dylib */; };
 		A5EF7AD117577ABA00598899 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A5EF7AD017577ABA00598899 /* libz.1.2.5.dylib */; };
 		A5EF7AD317577B5100598899 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5EF7AD217577B5100598899 /* MessageUI.framework */; };
+		A5EF7AE71757819600598899 /* DDAbstractDatabaseLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = A5EF7AD61757819600598899 /* DDAbstractDatabaseLogger.m */; };
+		A5EF7AE81757819600598899 /* DDASLLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = A5EF7AD81757819600598899 /* DDASLLogger.m */; };
+		A5EF7AE91757819600598899 /* DDFileLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = A5EF7ADA1757819600598899 /* DDFileLogger.m */; };
+		A5EF7AEA1757819600598899 /* DDLog.m in Sources */ = {isa = PBXBuildFile; fileRef = A5EF7ADC1757819600598899 /* DDLog.m */; };
+		A5EF7AEB1757819600598899 /* DDTTYLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = A5EF7ADE1757819600598899 /* DDTTYLogger.m */; };
+		A5EF7AEC1757819600598899 /* ContextFilterLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = A5EF7AE11757819600598899 /* ContextFilterLogFormatter.m */; };
+		A5EF7AED1757819600598899 /* DispatchQueueLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = A5EF7AE31757819600598899 /* DispatchQueueLogFormatter.m */; };
+		A5EF7AEE1757819600598899 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = A5EF7AE41757819600598899 /* README.txt */; };
+		A5EF7AEF1757819600598899 /* MyCustomLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = A5EF7AE61757819600598899 /* MyCustomLogFormatter.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -143,6 +152,23 @@
 		A5EF7ACE17577AA700598899 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		A5EF7AD017577ABA00598899 /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
 		A5EF7AD217577B5100598899 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		A5EF7AD51757819600598899 /* DDAbstractDatabaseLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDAbstractDatabaseLogger.h; sourceTree = "<group>"; };
+		A5EF7AD61757819600598899 /* DDAbstractDatabaseLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDAbstractDatabaseLogger.m; sourceTree = "<group>"; };
+		A5EF7AD71757819600598899 /* DDASLLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDASLLogger.h; sourceTree = "<group>"; };
+		A5EF7AD81757819600598899 /* DDASLLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDASLLogger.m; sourceTree = "<group>"; };
+		A5EF7AD91757819600598899 /* DDFileLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDFileLogger.h; sourceTree = "<group>"; };
+		A5EF7ADA1757819600598899 /* DDFileLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDFileLogger.m; sourceTree = "<group>"; };
+		A5EF7ADB1757819600598899 /* DDLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDLog.h; sourceTree = "<group>"; };
+		A5EF7ADC1757819600598899 /* DDLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDLog.m; sourceTree = "<group>"; };
+		A5EF7ADD1757819600598899 /* DDTTYLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDTTYLogger.h; sourceTree = "<group>"; };
+		A5EF7ADE1757819600598899 /* DDTTYLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDTTYLogger.m; sourceTree = "<group>"; };
+		A5EF7AE01757819600598899 /* ContextFilterLogFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContextFilterLogFormatter.h; sourceTree = "<group>"; };
+		A5EF7AE11757819600598899 /* ContextFilterLogFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContextFilterLogFormatter.m; sourceTree = "<group>"; };
+		A5EF7AE21757819600598899 /* DispatchQueueLogFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DispatchQueueLogFormatter.h; sourceTree = "<group>"; };
+		A5EF7AE31757819600598899 /* DispatchQueueLogFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DispatchQueueLogFormatter.m; sourceTree = "<group>"; };
+		A5EF7AE41757819600598899 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
+		A5EF7AE51757819600598899 /* MyCustomLogFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCustomLogFormatter.h; sourceTree = "<group>"; };
+		A5EF7AE61757819600598899 /* MyCustomLogFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCustomLogFormatter.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -290,6 +316,7 @@
 		A5EF7A7A17577A1000598899 /* vender */ = {
 			isa = PBXGroup;
 			children = (
+				A5EF7AD41757819600598899 /* Lumberjack */,
 				A5EF7A7B17577A1000598899 /* ShareSDK_v2.1.1 */,
 			);
 			path = vender;
@@ -379,6 +406,38 @@
 			path = UI;
 			sourceTree = "<group>";
 		};
+		A5EF7AD41757819600598899 /* Lumberjack */ = {
+			isa = PBXGroup;
+			children = (
+				A5EF7AD51757819600598899 /* DDAbstractDatabaseLogger.h */,
+				A5EF7AD61757819600598899 /* DDAbstractDatabaseLogger.m */,
+				A5EF7AD71757819600598899 /* DDASLLogger.h */,
+				A5EF7AD81757819600598899 /* DDASLLogger.m */,
+				A5EF7AD91757819600598899 /* DDFileLogger.h */,
+				A5EF7ADA1757819600598899 /* DDFileLogger.m */,
+				A5EF7ADB1757819600598899 /* DDLog.h */,
+				A5EF7ADC1757819600598899 /* DDLog.m */,
+				A5EF7ADD1757819600598899 /* DDTTYLogger.h */,
+				A5EF7ADE1757819600598899 /* DDTTYLogger.m */,
+				A5EF7ADF1757819600598899 /* Extensions */,
+				A5EF7AE51757819600598899 /* MyCustomLogFormatter.h */,
+				A5EF7AE61757819600598899 /* MyCustomLogFormatter.m */,
+			);
+			path = Lumberjack;
+			sourceTree = "<group>";
+		};
+		A5EF7ADF1757819600598899 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A5EF7AE01757819600598899 /* ContextFilterLogFormatter.h */,
+				A5EF7AE11757819600598899 /* ContextFilterLogFormatter.m */,
+				A5EF7AE21757819600598899 /* DispatchQueueLogFormatter.h */,
+				A5EF7AE31757819600598899 /* DispatchQueueLogFormatter.m */,
+				A5EF7AE41757819600598899 /* README.txt */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -463,6 +522,7 @@
 				A5EF7AC317577A1100598899 /* ShareSDKiPadSimpleShareViewUI.bundle in Resources */,
 				A5EF7AC617577A1100598899 /* ShareSDKiPhoneDefaultShareViewUI.bundle in Resources */,
 				A5EF7AC817577A1100598899 /* ShareSDKiPhoneSimpleShareViewUI.bundle in Resources */,
+				A5EF7AEE1757819600598899 /* README.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -528,6 +588,14 @@
 				A5B2CD0217564CFD007BE78F /* main.m in Sources */,
 				A5B2CD0617564CFD007BE78F /* AppDelegate.m in Sources */,
 				A5B2CD0F17564CFD007BE78F /* ViewController.m in Sources */,
+				A5EF7AE71757819600598899 /* DDAbstractDatabaseLogger.m in Sources */,
+				A5EF7AE81757819600598899 /* DDASLLogger.m in Sources */,
+				A5EF7AE91757819600598899 /* DDFileLogger.m in Sources */,
+				A5EF7AEA1757819600598899 /* DDLog.m in Sources */,
+				A5EF7AEB1757819600598899 /* DDTTYLogger.m in Sources */,
+				A5EF7AEC1757819600598899 /* ContextFilterLogFormatter.m in Sources */,
+				A5EF7AED1757819600598899 /* DispatchQueueLogFormatter.m in Sources */,
+				A5EF7AEF1757819600598899 /* MyCustomLogFormatter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
