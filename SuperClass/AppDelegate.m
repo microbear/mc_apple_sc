@@ -6,7 +6,7 @@
 //
 //
 #import <RestKit/RestKit.h>
-
+#import <ShareSDK/ShareSDK.h>
 #import "AppDelegate.h"
 
 #import "ViewController.h"
