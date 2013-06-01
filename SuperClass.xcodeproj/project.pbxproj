@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5ACB5ECB93624351988853D8 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78539FF2464A43E5A9911024 /* libPods.a */; };
+		A52BC2431759FE7F0044E26C /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = A52BC2421759FE7F0044E26C /* UserInfo.m */; };
 		A5B2CCF617564CFD007BE78F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B2CCF517564CFD007BE78F /* UIKit.framework */; };
 		A5B2CCF817564CFD007BE78F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B2CCF717564CFD007BE78F /* Foundation.framework */; };
 		A5B2CCFA17564CFD007BE78F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B2CCF917564CFD007BE78F /* CoreGraphics.framework */; };
@@ -88,6 +89,8 @@
 /* Begin PBXFileReference section */
 		2881E3BD3ECF46B0B898D021 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		78539FF2464A43E5A9911024 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		A52BC2411759FE7F0044E26C /* UserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfo.h; sourceTree = "<group>"; };
+		A52BC2421759FE7F0044E26C /* UserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfo.m; sourceTree = "<group>"; };
 		A5B2CCF217564CFD007BE78F /* SuperClass.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SuperClass.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5B2CCF517564CFD007BE78F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A5B2CCF717564CFD007BE78F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -229,6 +232,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A52BC2401759FE1E0044E26C /* DataObject */ = {
+			isa = PBXGroup;
+			children = (
+				A52BC2411759FE7F0044E26C /* UserInfo.h */,
+				A52BC2421759FE7F0044E26C /* UserInfo.m */,
+			);
+			name = DataObject;
+			sourceTree = "<group>";
+		};
 		A5B2CCE917564CFD007BE78F = {
 			isa = PBXGroup;
 			children = (
@@ -270,6 +282,7 @@
 		A5B2CCFB17564CFD007BE78F /* SuperClass */ = {
 			isa = PBXGroup;
 			children = (
+				A52BC2401759FE1E0044E26C /* DataObject */,
 				A5B2CD0417564CFD007BE78F /* AppDelegate.h */,
 				A5B2CD0517564CFD007BE78F /* AppDelegate.m */,
 				A5B2CD0D17564CFD007BE78F /* ViewController.h */,
@@ -596,6 +609,7 @@
 				A5EF7AEC1757819600598899 /* ContextFilterLogFormatter.m in Sources */,
 				A5EF7AED1757819600598899 /* DispatchQueueLogFormatter.m in Sources */,
 				A5EF7AEF1757819600598899 /* MyCustomLogFormatter.m in Sources */,
+				A52BC2431759FE7F0044E26C /* UserInfo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
