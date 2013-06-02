@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "UserInfo_coredata.h"
 
 @interface ViewController ()
 
@@ -17,6 +18,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self test_RestKit_coredata];
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -25,5 +28,86 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+#pragma -mark test
+-(void) test_RestKit_coredata
+{
+    //using my sina weibo to test the RestKit
+    //to creat the sina weibo's accesstoken, you should creat your sina's app,and run the sinaweibo's SDK demo.
+    //To known more, please refer to "http://open.weibo.com/wiki/SDK"
+    //
+#define  SINA_WEIBO_USERID      @"2100396861"
+#define  SINA_WEIBO_ACCESSTOKEN @"2.00jKDJSC9UyzcEc62f3a99c8aLvbmB"
+    RKLogConfigureByName("RestKit/ObjectMapping", RKLogLevelInfo);
+    RKLogConfigureByName("RestKit/CoreData", RKLogLevelTrace);
+    
+    //1.creat the sqlite file
+    NSError *error = nil;
+    NSManagedObjectModel *managedObjectModel = [NSManagedObjectModel mergedModelFromBundles:nil];
+    RKManagedObjectStore *managedObjectStore = [[RKManagedObjectStore alloc] initWithManagedObjectModel:managedObjectModel];
+    BOOL success = RKEnsureDirectoryExistsAtPath(RKApplicationDataDirectory(), &error);
+    if (! success) {
+        RKLogError(@"Failed to create Application Data Directory at path '%@': %@", RKApplicationDataDirectory(), error);
+    }
+    NSString *path = [RKApplicationDataDirectory() stringByAppendingPathComponent:@"Store.sqlite"];
+    NSLog(@"%@", path);
+    NSPersistentStore *persistentStore = [managedObjectStore addSQLitePersistentStoreAtPath:path fromSeedDatabaseAtPath:nil withConfiguration:nil options:nil error:&error];
+    if (! persistentStore) {
+        RKLogError(@"Failed adding persistent store at path '%@': %@", path, error);
+    }
+    [managedObjectStore createManagedObjectContexts];
+    
+    //2.creat responseDescriptor
+    RKEntityMapping *mapping = [RKEntityMapping mappingForEntityForName:@"UserInfo" inManagedObjectStore:managedObjectStore];
+    [mapping addAttributeMappingsFromDictionary:@{ @"id": @"userID", @"name": @"username" }];
+    mapping.identificationAttributes = @[ @"userID" ];
+    
+    NSIndexSet *statusCodes = RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful); // Anything in 2xx
+    RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:mapping pathPattern:nil keyPath:nil statusCodes:statusCodes];
+    
+    //3.intergrate with the object manager
+    RKObjectManager *manager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:@"https://api.weibo.com"]];
+    manager.managedObjectStore = managedObjectStore;
+    [manager addResponseDescriptor:responseDescriptor];
+    
+    //4.perform the http request
+    NSDictionary *paramDic = @{@"uid":@2100396861, @"access_token":SINA_WEIBO_ACCESSTOKEN};
+    [[RKObjectManager sharedManager] getObjectsAtPath:@"/2/users/show.json" parameters:paramDic success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        
+        //5.fetch the result from the core data
+        NSEntityDescription *entityDescription = [NSEntityDescription
+                                                  entityForName:@"UserInfo"
+                                                  inManagedObjectContext:[RKManagedObjectStore defaultStore].mainQueueManagedObjectContext];
+        NSFetchRequest *request = [[NSFetchRequest alloc] init];
+        
+        NSSortDescriptor *sortWithUniqueID = [NSSortDescriptor sortDescriptorWithKey:@"userID" ascending:YES];
+        request.sortDescriptors = [NSArray arrayWithObject:sortWithUniqueID];
+        [request setEntity:entityDescription];
+        
+        NSError *error = nil;
+        NSArray *fetchedItems = [[RKManagedObjectStore defaultStore].mainQueueManagedObjectContext executeFetchRequest:request error:&error];
+        if (error)
+        {
+            NSLog(@"error is %@", [error localizedDescription]);
+        }
+        UserInfo_coredata* core_object = [fetchedItems lastObject];
+        NSLog(@"%@", core_object.username);
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Alert"
+                                                            message:core_object.username
+                                                           delegate:self cancelButtonTitle:@"Cancel"
+                                                  otherButtonTitles:@"OK", nil];
+        [alertView show];
+        
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+
+        // Transport error or server error handled by errorDescriptor
+    }];
+    
+#undef SINA_WEIBO_USERID
+#undef SINA_WEIBO_ACCESSTOKEN
+    
+    
+}
+
 
 @end

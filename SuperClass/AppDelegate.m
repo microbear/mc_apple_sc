@@ -10,7 +10,6 @@
 #import "MyCustomLogFormatter.h"
 #import "UserInfo.h"
 
-
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -19,7 +18,8 @@
     [DDLog addLogger:[DDTTYLogger sharedInstance]];
     [[DDTTYLogger sharedInstance] setLogFormatter:[[MyCustomLogFormatter alloc] init]];
     
-    [self test_RestKit];
+    //[self test_RestKit];
+    
     //shareSDK initial
     //[ShareSDK registerApp:@"SCTest"];
     //[self initializePlat];
@@ -74,8 +74,8 @@
     //to creat the sina weibo's accesstoken, you should creat your sina's app,and run the sinaweibo's SDK demo.
     //To known more, please refer to "http://open.weibo.com/wiki/SDK"
     //
-    #define  SINA_WEIBO_USERID      @"2100396861"
-    #define  SINA_WEIBO_ACCESSTOKEN @"2.00jKDJSC9UyzcEc62f3a99c8aLvbmB"
+#define  SINA_WEIBO_USERID      @"2100396861"
+#define  SINA_WEIBO_ACCESSTOKEN @"2.00jKDJSC9UyzcEc62f3a99c8aLvbmB"
    
     RKObjectMapping *mapping = [RKObjectMapping mappingForClass:[UserInfo class]];
     [mapping addAttributeMappingsFromDictionary:@{
@@ -98,8 +98,12 @@
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         // Transport error or server error handled by errorDescriptor
     }];
+    
+#undef SINA_WEIBO_USERID
+#undef SINA_WEIBO_ACCESSTOKEN
 
     
 }
+
 
 @end
