@@ -30,6 +30,15 @@
 }
 
 #pragma -mark test
+-(void) RKTwitterShowAlert:(NSError *)error withTitle:(NSString *)title message:(NSString *)message
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title
+                                                    message:message
+                                                   delegate:nil
+                                          cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alert show];
+}
+
 -(void) test_RestKit_coredata
 {
     //using my sina weibo to test the RestKit
@@ -70,33 +79,30 @@
     manager.managedObjectStore = managedObjectStore;
     [manager addResponseDescriptor:responseDescriptor];
     
-    //4.perform the http request
+    //4.perform the sina weibo “users/show” API
+    //please refer to http://open.weibo.com/wiki/2/users/show
     NSDictionary *paramDic = @{@"uid":@2100396861, @"access_token":SINA_WEIBO_ACCESSTOKEN};
     [[RKObjectManager sharedManager] getObjectsAtPath:@"/2/users/show.json" parameters:paramDic success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         
         //5.fetch the result from the core data
-        NSEntityDescription *entityDescription = [NSEntityDescription
-                                                  entityForName:@"UserInfo"
-                                                  inManagedObjectContext:[RKManagedObjectStore defaultStore].mainQueueManagedObjectContext];
-        NSFetchRequest *request = [[NSFetchRequest alloc] init];
-        
+        NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"UserInfo"];
         NSSortDescriptor *sortWithUniqueID = [NSSortDescriptor sortDescriptorWithKey:@"userID" ascending:YES];
-        request.sortDescriptors = [NSArray arrayWithObject:sortWithUniqueID];
-        [request setEntity:entityDescription];
+        fetchRequest.sortDescriptors = @[sortWithUniqueID];
         
         NSError *error = nil;
-        NSArray *fetchedItems = [[RKManagedObjectStore defaultStore].mainQueueManagedObjectContext executeFetchRequest:request error:&error];
-        if (error)
-        {
-            NSLog(@"error is %@", [error localizedDescription]);
+        self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
+                                                                            managedObjectContext:[RKManagedObjectStore defaultStore].mainQueueManagedObjectContext
+                                                                              sectionNameKeyPath:nil
+                                                                                       cacheName:nil];
+        [self.fetchedResultsController setDelegate:self];
+        BOOL fetchSuccessful = [self.fetchedResultsController performFetch:&error];
+        NSAssert([[self.fetchedResultsController fetchedObjects] count], @"Seeding didn't work...");
+        if (! fetchSuccessful) {
+            [self RKTwitterShowAlert:error withTitle:@"error" message:[error description]];
         }
-        UserInfo_coredata* core_object = [fetchedItems lastObject];
-        NSLog(@"%@", core_object.username);
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Alert"
-                                                            message:core_object.username
-                                                           delegate:self cancelButtonTitle:@"Cancel"
-                                                  otherButtonTitles:@"OK", nil];
-        [alertView show];
+        NSArray *fetchResult = [self.fetchedResultsController fetchedObjects];
+        UserInfo_coredata* core_object = [fetchResult lastObject];
+        [self RKTwitterShowAlert:nil withTitle:@"username" message:core_object.username];
         
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
 
@@ -109,5 +115,11 @@
     
 }
 
+#pragma mark NSFetchedResultsControllerDelegate methods
+
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
+{
+    //[self.tableView reloadData];
+}
 
 @end

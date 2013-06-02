@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface ViewController : UIViewController<NSFetchedResultsControllerDelegate>
+@property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 @end
