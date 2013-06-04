@@ -68,6 +68,7 @@
 }
 
 #pragma -mark Restkit
+//test pull
 -(void) test_RestKit
 {
     //using my sina weibo to test the RestKit
