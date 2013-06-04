@@ -9,7 +9,7 @@
 #import "ViewController.h"
 #import "MyCustomLogFormatter.h"
 #import "UserInfo.h"
-
+//modified in the main branch
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
