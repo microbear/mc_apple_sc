@@ -20,6 +20,7 @@
     [super viewDidLoad];
     
     [self test_RestKit_coredata];
+    //merge in different file
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
