@@ -20,13 +20,13 @@
     [super viewDidLoad];
     
     [self test_RestKit_coredata];
-    //merge in different file
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+    //merge in different file
     // Dispose of any resources that can be recreated.
 }
 
