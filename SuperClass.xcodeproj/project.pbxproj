@@ -17,11 +17,9 @@
 		A5B2CCFA17564CFD007BE78F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B2CCF917564CFD007BE78F /* CoreGraphics.framework */; };
 		A5B2CD0017564CFD007BE78F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A5B2CCFE17564CFD007BE78F /* InfoPlist.strings */; };
 		A5B2CD0217564CFD007BE78F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B2CD0117564CFD007BE78F /* main.m */; };
-		A5B2CD0617564CFD007BE78F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B2CD0517564CFD007BE78F /* AppDelegate.m */; };
 		A5B2CD0817564CFD007BE78F /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = A5B2CD0717564CFD007BE78F /* Default.png */; };
 		A5B2CD0A17564CFD007BE78F /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A5B2CD0917564CFD007BE78F /* Default@2x.png */; };
 		A5B2CD0C17564CFD007BE78F /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A5B2CD0B17564CFD007BE78F /* Default-568h@2x.png */; };
-		A5B2CD0F17564CFD007BE78F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B2CD0E17564CFD007BE78F /* ViewController.m */; };
 		A5B2CD1217564CFD007BE78F /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5B2CD1017564CFD007BE78F /* ViewController.xib */; };
 		A5B2CD1A17564CFD007BE78F /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B2CD1917564CFD007BE78F /* SenTestingKit.framework */; };
 		A5B2CD1B17564CFD007BE78F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B2CCF517564CFD007BE78F /* UIKit.framework */; };
@@ -108,12 +106,10 @@
 		A5B2CD0117564CFD007BE78F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A5B2CD0317564CFD007BE78F /* SuperClass-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SuperClass-Prefix.pch"; sourceTree = "<group>"; };
 		A5B2CD0417564CFD007BE78F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		A5B2CD0517564CFD007BE78F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		A5B2CD0717564CFD007BE78F /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		A5B2CD0917564CFD007BE78F /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		A5B2CD0B17564CFD007BE78F /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		A5B2CD0D17564CFD007BE78F /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		A5B2CD0E17564CFD007BE78F /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		A5B2CD1117564CFD007BE78F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
 		A5B2CD1817564CFD007BE78F /* SuperClassTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SuperClassTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5B2CD1917564CFD007BE78F /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -295,9 +291,7 @@
 			children = (
 				A52BC2401759FE1E0044E26C /* DataObject */,
 				A5B2CD0417564CFD007BE78F /* AppDelegate.h */,
-				A5B2CD0517564CFD007BE78F /* AppDelegate.m */,
 				A5B2CD0D17564CFD007BE78F /* ViewController.h */,
-				A5B2CD0E17564CFD007BE78F /* ViewController.m */,
 				A50E6E5A176581CE0081F637 /* SupperClassNetworkAPI.h */,
 				A50E6E5B176581CF0081F637 /* SupperClassNetworkAPI.m */,
 				A5B2CD1017564CFD007BE78F /* ViewController.xib */,
@@ -612,8 +606,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A5B2CD0217564CFD007BE78F /* main.m in Sources */,
-				A5B2CD0617564CFD007BE78F /* AppDelegate.m in Sources */,
-				A5B2CD0F17564CFD007BE78F /* ViewController.m in Sources */,
 				A5EF7AE71757819600598899 /* DDAbstractDatabaseLogger.m in Sources */,
 				A5EF7AE81757819600598899 /* DDASLLogger.m in Sources */,
 				A5EF7AE91757819600598899 /* DDFileLogger.m in Sources */,
