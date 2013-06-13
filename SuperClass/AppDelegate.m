@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "MyCustomLogFormatter.h"
 #import "UserInfo.h"
+#import "SupperClassNetworkAPI.h"
 
 @implementation AppDelegate
 
@@ -19,6 +20,7 @@
     [[DDTTYLogger sharedInstance] setLogFormatter:[[MyCustomLogFormatter alloc] init]];
     
     //[self test_RestKit];
+    [SupperClassNetworkAPI initialize];
     
     //shareSDK initial
     //[ShareSDK registerApp:@"SCTest"];
@@ -67,8 +69,34 @@
                                appSecret:@"a7d7a03994b6a1bc044a7e44f16726c7" redirectUri:@"http://blog.sina.com.cn/u/2100396861"];
 }
 
+#pragma -mark network
+-(void)supperClass_network_initialize
+{
+    RKLogConfigureByName("RestKit/ObjectMapping", RKLogLevelInfo);
+    RKLogConfigureByName("RestKit/CoreData", RKLogLevelTrace);
+    
+    //creat the sqlite file
+    NSError *error = nil;
+    NSManagedObjectModel *managedObjectModel = [NSManagedObjectModel mergedModelFromBundles:nil];
+    RKManagedObjectStore *managedObjectStore = [[RKManagedObjectStore alloc] initWithManagedObjectModel:managedObjectModel];
+    BOOL success = RKEnsureDirectoryExistsAtPath(RKApplicationDataDirectory(), &error);
+    if (! success) {
+        RKLogError(@"Failed to create Application Data Directory at path '%@': %@", RKApplicationDataDirectory(), error);
+    }
+    NSString *path = [RKApplicationDataDirectory() stringByAppendingPathComponent:@"Store.sqlite"];
+    NSLog(@"%@", path);
+    NSPersistentStore *persistentStore = [managedObjectStore addSQLitePersistentStoreAtPath:path fromSeedDatabaseAtPath:nil withConfiguration:nil options:nil error:&error];
+    if (! persistentStore) {
+        RKLogError(@"Failed adding persistent store at path '%@': %@", path, error);
+    }
+    [managedObjectStore createManagedObjectContexts];
+
+}
+
+
+
+
 #pragma -mark Restkit
-//test pull
 -(void) test_RestKit
 {
     //using my sina weibo to test the RestKit
@@ -98,12 +126,9 @@
         NSLog(@"user name:%@", user.username);
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         // Transport error or server error handled by errorDescriptor
-    }];
-    
+    }]; 
 #undef SINA_WEIBO_USERID
 #undef SINA_WEIBO_ACCESSTOKEN
-
-    
 }
 
 

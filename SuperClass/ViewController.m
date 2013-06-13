@@ -8,7 +8,7 @@
 
 #import "ViewController.h"
 #import "UserInfo_coredata.h"
-
+#import "SupperClassNetworkAPI.h"
 @interface ViewController ()
 
 @end
@@ -19,7 +19,23 @@
 {
     [super viewDidLoad];
     
-    [self test_RestKit_coredata];
+    [[SupperClassNetworkAPI sharedInstance] loadUserInfo:^(BOOL complete, NSFetchedResultsController *result_controller){
+        if (complete)
+        {
+            self.fetchedResultsController = result_controller;
+            self.fetchedResultsController.delegate = self;
+            NSLog(@"fetched userinfo count = %d", [[self.fetchedResultsController fetchedObjects] count]);
+        }
+    }];
+    
+    //self.fetchedResultsController = [SupperClassNetworkAPI getUserInfo];
+    //[self.fetchedResultsController setDelegate:self];
+    
+    //NSArray *fetchResult = [self.fetchedResultsController fetchedObjects];
+    //UserInfo_coredata* core_object = [fetchResult lastObject];
+    //[self RKTwitterShowAlert:nil withTitle:@"username" message:core_object.username];
+
+    //[self test_RestKit_coredata];
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -28,6 +44,16 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
+#pragma mark NSFetchedResultsControllerDelegate methods
+
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
+{
+    //[self.tableView reloadData];
+    NSLog(@"count = %d", [self.fetchedResultsController fetchedObjects].count);
+}
+
 
 #pragma -mark test
 -(void) RKTwitterShowAlert:(NSError *)error withTitle:(NSString *)title message:(NSString *)message
@@ -38,7 +64,6 @@
                                           cancelButtonTitle:@"OK" otherButtonTitles:nil];
     [alert show];
 }
-
 -(void) test_RestKit_coredata
 {
     //using my sina weibo to test the RestKit
@@ -67,7 +92,7 @@
     [managedObjectStore createManagedObjectContexts];
     
     //2.creat responseDescriptor
-    RKEntityMapping *mapping = [RKEntityMapping mappingForEntityForName:@"UserInfo" inManagedObjectStore:managedObjectStore];
+    RKEntityMapping *mapping = [RKEntityMapping mappingForEntityForName:@"UserInfo" inManagedObjectStore:[RKManagedObjectStore defaultStore]];
     [mapping addAttributeMappingsFromDictionary:@{ @"id": @"userID", @"name": @"username" }];
     mapping.identificationAttributes = @[ @"userID" ];
     
@@ -105,7 +130,7 @@
         [self RKTwitterShowAlert:nil withTitle:@"username" message:core_object.username];
         
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-
+        
         // Transport error or server error handled by errorDescriptor
     }];
     
@@ -115,11 +140,7 @@
     
 }
 
-#pragma mark NSFetchedResultsControllerDelegate methods
 
-- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
-{
-    //[self.tableView reloadData];
-}
+
 
 @end
