@@ -26,6 +26,8 @@
 		A5B2CD1C17564CFD007BE78F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B2CCF717564CFD007BE78F /* Foundation.framework */; };
 		A5B2CD2417564CFD007BE78F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A5B2CD2217564CFD007BE78F /* InfoPlist.strings */; };
 		A5B2CD2717564CFD007BE78F /* SuperClassTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B2CD2617564CFD007BE78F /* SuperClassTests.m */; };
+		A5E9C7A7176A01BA0069A689 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E9C7A5176A01BA0069A689 /* AppDelegate.m */; };
+		A5E9C7A8176A01BA0069A689 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E9C7A6176A01BA0069A689 /* ViewController.m */; };
 		A5EF7AA717577A1100598899 /* DouBanConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5EF7A7D17577A1000598899 /* DouBanConnection.framework */; };
 		A5EF7AA817577A1100598899 /* FacebookConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5EF7A7E17577A1100598899 /* FacebookConnection.framework */; };
 		A5EF7AA917577A1100598899 /* InstapaperConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5EF7A7F17577A1100598899 /* InstapaperConnection.framework */; };
@@ -117,6 +119,8 @@
 		A5B2CD2317564CFD007BE78F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A5B2CD2517564CFD007BE78F /* SuperClassTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SuperClassTests.h; sourceTree = "<group>"; };
 		A5B2CD2617564CFD007BE78F /* SuperClassTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SuperClassTests.m; sourceTree = "<group>"; };
+		A5E9C7A5176A01BA0069A689 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		A5E9C7A6176A01BA0069A689 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		A5EF7A7D17577A1000598899 /* DouBanConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DouBanConnection.framework; sourceTree = "<group>"; };
 		A5EF7A7E17577A1100598899 /* FacebookConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookConnection.framework; sourceTree = "<group>"; };
 		A5EF7A7F17577A1100598899 /* InstapaperConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = InstapaperConnection.framework; sourceTree = "<group>"; };
@@ -291,6 +295,8 @@
 			children = (
 				A52BC2401759FE1E0044E26C /* DataObject */,
 				A5B2CD0417564CFD007BE78F /* AppDelegate.h */,
+				A5E9C7A5176A01BA0069A689 /* AppDelegate.m */,
+				A5E9C7A6176A01BA0069A689 /* ViewController.m */,
 				A5B2CD0D17564CFD007BE78F /* ViewController.h */,
 				A50E6E5A176581CE0081F637 /* SupperClassNetworkAPI.h */,
 				A50E6E5B176581CF0081F637 /* SupperClassNetworkAPI.m */,
@@ -618,6 +624,8 @@
 				A55153A6175B23B600E72930 /* SuperClass.xcdatamodeld in Sources */,
 				A55153A9175B24F700E72930 /* UserInfo_coredata.m in Sources */,
 				A50E6E5C176581CF0081F637 /* SupperClassNetworkAPI.m in Sources */,
+				A5E9C7A7176A01BA0069A689 /* AppDelegate.m in Sources */,
+				A5E9C7A8176A01BA0069A689 /* ViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
