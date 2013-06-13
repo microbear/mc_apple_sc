@@ -87,7 +87,7 @@ static SupperClassNetworkAPI *sharedInstance;
         
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         
-        NSLog(@"load userinfo error\n");
+        NSLog(@"load entity:%@ fail!\n", entityName);
         
         
     }];

@@ -38,6 +38,15 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+#pragma mark NSFetchedResultsControllerDelegate methods
+
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
+{
+    //[self.tableView reloadData];
+}
+
+
 #pragma -mark test
 -(void) RKTwitterShowAlert:(NSError *)error withTitle:(NSString *)title message:(NSString *)message
 {
@@ -124,11 +133,6 @@
     
 }
 
-#pragma mark NSFetchedResultsControllerDelegate methods
 
-- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
-{
-    //[self.tableView reloadData];
-}
 
 @end
