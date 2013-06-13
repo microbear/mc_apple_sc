@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5ACB5ECB93624351988853D8 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78539FF2464A43E5A9911024 /* libPods.a */; };
+		A50E6E5C176581CF0081F637 /* SupperClassNetworkAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = A50E6E5B176581CF0081F637 /* SupperClassNetworkAPI.m */; };
 		A52BC2431759FE7F0044E26C /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = A52BC2421759FE7F0044E26C /* UserInfo.m */; };
 		A55153A6175B23B600E72930 /* SuperClass.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A55153A4175B23B600E72930 /* SuperClass.xcdatamodeld */; };
 		A55153A9175B24F700E72930 /* UserInfo_coredata.m in Sources */ = {isa = PBXBuildFile; fileRef = A55153A8175B24F700E72930 /* UserInfo_coredata.m */; };
@@ -91,6 +92,8 @@
 /* Begin PBXFileReference section */
 		2881E3BD3ECF46B0B898D021 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		78539FF2464A43E5A9911024 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		A50E6E5A176581CE0081F637 /* SupperClassNetworkAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SupperClassNetworkAPI.h; sourceTree = "<group>"; };
+		A50E6E5B176581CF0081F637 /* SupperClassNetworkAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SupperClassNetworkAPI.m; sourceTree = "<group>"; };
 		A52BC2411759FE7F0044E26C /* UserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfo.h; sourceTree = "<group>"; };
 		A52BC2421759FE7F0044E26C /* UserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfo.m; sourceTree = "<group>"; };
 		A55153A5175B23B600E72930 /* SuperClass.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SuperClass.xcdatamodel; sourceTree = "<group>"; };
@@ -295,6 +298,8 @@
 				A5B2CD0517564CFD007BE78F /* AppDelegate.m */,
 				A5B2CD0D17564CFD007BE78F /* ViewController.h */,
 				A5B2CD0E17564CFD007BE78F /* ViewController.m */,
+				A50E6E5A176581CE0081F637 /* SupperClassNetworkAPI.h */,
+				A50E6E5B176581CF0081F637 /* SupperClassNetworkAPI.m */,
 				A5B2CD1017564CFD007BE78F /* ViewController.xib */,
 				A5B2CCFC17564CFD007BE78F /* Supporting Files */,
 			);
@@ -620,6 +625,7 @@
 				A52BC2431759FE7F0044E26C /* UserInfo.m in Sources */,
 				A55153A6175B23B600E72930 /* SuperClass.xcdatamodeld in Sources */,
 				A55153A9175B24F700E72930 /* UserInfo_coredata.m in Sources */,
+				A50E6E5C176581CF0081F637 /* SupperClassNetworkAPI.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
