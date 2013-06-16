@@ -9,9 +9,10 @@
 /* Begin PBXBuildFile section */
 		5ACB5ECB93624351988853D8 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78539FF2464A43E5A9911024 /* libPods.a */; };
 		A50E6E5C176581CF0081F637 /* SupperClassNetworkAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = A50E6E5B176581CF0081F637 /* SupperClassNetworkAPI.m */; };
-		A52BC2431759FE7F0044E26C /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = A52BC2421759FE7F0044E26C /* UserInfo.m */; };
-		A55153A6175B23B600E72930 /* SuperClass.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A55153A4175B23B600E72930 /* SuperClass.xcdatamodeld */; };
-		A55153A9175B24F700E72930 /* UserInfo_coredata.m in Sources */ = {isa = PBXBuildFile; fileRef = A55153A8175B24F700E72930 /* UserInfo_coredata.m */; };
+		A5B25232176DC68500046F3A /* SuperClass.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A5B25230176DC68400046F3A /* SuperClass.xcdatamodeld */; };
+		A5B25233176DC86600046F3A /* SuperClass.xcdatamodeld in Resources */ = {isa = PBXBuildFile; fileRef = A5B25230176DC68400046F3A /* SuperClass.xcdatamodeld */; };
+		A5B2523C176DCB0E00046F3A /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B2523B176DCB0E00046F3A /* UserInfo.m */; };
+		A5B2523F176DCB0F00046F3A /* Status.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B2523E176DCB0F00046F3A /* Status.m */; };
 		A5B2CCF617564CFD007BE78F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B2CCF517564CFD007BE78F /* UIKit.framework */; };
 		A5B2CCF817564CFD007BE78F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B2CCF717564CFD007BE78F /* Foundation.framework */; };
 		A5B2CCFA17564CFD007BE78F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B2CCF917564CFD007BE78F /* CoreGraphics.framework */; };
@@ -94,11 +95,11 @@
 		78539FF2464A43E5A9911024 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A50E6E5A176581CE0081F637 /* SupperClassNetworkAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SupperClassNetworkAPI.h; sourceTree = "<group>"; };
 		A50E6E5B176581CF0081F637 /* SupperClassNetworkAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SupperClassNetworkAPI.m; sourceTree = "<group>"; };
-		A52BC2411759FE7F0044E26C /* UserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfo.h; sourceTree = "<group>"; };
-		A52BC2421759FE7F0044E26C /* UserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfo.m; sourceTree = "<group>"; };
-		A55153A5175B23B600E72930 /* SuperClass.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SuperClass.xcdatamodel; sourceTree = "<group>"; };
-		A55153A7175B24F700E72930 /* UserInfo_coredata.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfo_coredata.h; sourceTree = "<group>"; };
-		A55153A8175B24F700E72930 /* UserInfo_coredata.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfo_coredata.m; sourceTree = "<group>"; };
+		A5B25231176DC68500046F3A /* SuperClass.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SuperClass.xcdatamodel; sourceTree = "<group>"; };
+		A5B2523A176DCB0E00046F3A /* UserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfo.h; sourceTree = "<group>"; };
+		A5B2523B176DCB0E00046F3A /* UserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfo.m; sourceTree = "<group>"; };
+		A5B2523D176DCB0F00046F3A /* Status.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Status.h; sourceTree = "<group>"; };
+		A5B2523E176DCB0F00046F3A /* Status.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Status.m; sourceTree = "<group>"; };
 		A5B2CCF217564CFD007BE78F /* SuperClass.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SuperClass.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5B2CCF517564CFD007BE78F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A5B2CCF717564CFD007BE78F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -243,11 +244,11 @@
 		A52BC2401759FE1E0044E26C /* DataObject */ = {
 			isa = PBXGroup;
 			children = (
-				A52BC2411759FE7F0044E26C /* UserInfo.h */,
-				A52BC2421759FE7F0044E26C /* UserInfo.m */,
-				A55153A4175B23B600E72930 /* SuperClass.xcdatamodeld */,
-				A55153A7175B24F700E72930 /* UserInfo_coredata.h */,
-				A55153A8175B24F700E72930 /* UserInfo_coredata.m */,
+				A5B25230176DC68400046F3A /* SuperClass.xcdatamodeld */,
+				A5B2523D176DCB0F00046F3A /* Status.h */,
+				A5B2523E176DCB0F00046F3A /* Status.m */,
+				A5B2523A176DCB0E00046F3A /* UserInfo.h */,
+				A5B2523B176DCB0E00046F3A /* UserInfo.m */,
 			);
 			name = DataObject;
 			sourceTree = "<group>";
@@ -536,6 +537,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5B25233176DC86600046F3A /* SuperClass.xcdatamodeld in Resources */,
 				A5B2CD0017564CFD007BE78F /* InfoPlist.strings in Resources */,
 				A5B2CD0817564CFD007BE78F /* Default.png in Resources */,
 				A5B2CD0A17564CFD007BE78F /* Default@2x.png in Resources */,
@@ -620,12 +622,12 @@
 				A5EF7AEC1757819600598899 /* ContextFilterLogFormatter.m in Sources */,
 				A5EF7AED1757819600598899 /* DispatchQueueLogFormatter.m in Sources */,
 				A5EF7AEF1757819600598899 /* MyCustomLogFormatter.m in Sources */,
-				A52BC2431759FE7F0044E26C /* UserInfo.m in Sources */,
-				A55153A6175B23B600E72930 /* SuperClass.xcdatamodeld in Sources */,
-				A55153A9175B24F700E72930 /* UserInfo_coredata.m in Sources */,
 				A50E6E5C176581CF0081F637 /* SupperClassNetworkAPI.m in Sources */,
 				A5E9C7A7176A01BA0069A689 /* AppDelegate.m in Sources */,
 				A5E9C7A8176A01BA0069A689 /* ViewController.m in Sources */,
+				A5B25232176DC68500046F3A /* SuperClass.xcdatamodeld in Sources */,
+				A5B2523C176DCB0E00046F3A /* UserInfo.m in Sources */,
+				A5B2523F176DCB0F00046F3A /* Status.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -854,12 +856,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		A55153A4175B23B600E72930 /* SuperClass.xcdatamodeld */ = {
+		A5B25230176DC68400046F3A /* SuperClass.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				A55153A5175B23B600E72930 /* SuperClass.xcdatamodel */,
+				A5B25231176DC68500046F3A /* SuperClass.xcdatamodel */,
 			);
-			currentVersion = A55153A5175B23B600E72930 /* SuperClass.xcdatamodel */;
+			currentVersion = A5B25231176DC68500046F3A /* SuperClass.xcdatamodel */;
 			path = SuperClass.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
