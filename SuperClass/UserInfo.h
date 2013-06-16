@@ -2,15 +2,19 @@
 //  UserInfo.h
 //  SuperClass
 //
-//  Created by xiongwei on 13-6-1.
+//  Created by xiongwei on 13-6-16.
 //
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
 
-@interface UserInfo : NSObject
+@class Status;
 
-@property (nonatomic, copy) NSNumber *userID;
-@property (nonatomic, copy) NSString *username;
+@interface UserInfo : NSManagedObject
+
+@property (nonatomic, retain) NSNumber * userID;
+@property (nonatomic, retain) NSString * username;
+@property (nonatomic, retain) Status *status;
 
 @end

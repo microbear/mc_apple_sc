@@ -66,7 +66,7 @@
     [ShareSDK connectSinaWeiboWithAppKey:@"4240802632"
                                appSecret:@"a7d7a03994b6a1bc044a7e44f16726c7" redirectUri:@"http://blog.sina.com.cn/u/2100396861"];
 }
-
+#if 0
 #pragma -mark Restkit
 //test pull
 -(void) test_RestKit
@@ -105,6 +105,6 @@
 
     
 }
-
+#endif
 
 @end

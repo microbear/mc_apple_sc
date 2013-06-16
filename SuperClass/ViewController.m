@@ -7,7 +7,8 @@
 //
 
 #import "ViewController.h"
-#import "UserInfo_coredata.h"
+#import "UserInfo.h"
+#import "Status.h"
 #import "SupperClassNetworkAPI.h"
 @interface ViewController ()
 
@@ -24,6 +25,8 @@
             self.fetchedResultsController = result_controller;
             self.fetchedResultsController.delegate = self;
             NSLog(@"fetched userinfo count = %d", [[self.fetchedResultsController fetchedObjects] count]);
+            UserInfo *user = (UserInfo *)[[self.fetchedResultsController fetchedObjects] lastObject];
+            NSLog(@"name:%@ status:%@", user.username, user.status.text);
         }
     }];
     //[self test_RestKit_coredata];
@@ -119,7 +122,7 @@
             [self RKTwitterShowAlert:error withTitle:@"error" message:[error description]];
         }
         NSArray *fetchResult = [self.fetchedResultsController fetchedObjects];
-        UserInfo_coredata* core_object = [fetchResult lastObject];
+        UserInfo* core_object = [fetchResult lastObject];
         [self RKTwitterShowAlert:nil withTitle:@"username" message:core_object.username];
         
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {

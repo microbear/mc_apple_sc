@@ -103,6 +103,13 @@ static SupperClassNetworkAPI *sharedInstance;
     NSString *sort_key = @"userID";
     RKEntityMapping *mapping = [RKEntityMapping mappingForEntityForName:entity_name inManagedObjectStore:[RKManagedObjectStore defaultStore]];
     [mapping addAttributeMappingsFromDictionary:@{ @"id": @"userID", @"name": @"username" }];
+    
+    RKEntityMapping* statusMapping = [RKEntityMapping mappingForEntityForName:@"Status" inManagedObjectStore:[RKManagedObjectStore defaultStore]];
+    [statusMapping addAttributeMappingsFromArray:@[ @"created_at", @"text" ]];
+    
+    [mapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"status"
+                                                                                   toKeyPath:@"status"
+                                                                                 withMapping:statusMapping]];
     mapping.identificationAttributes = @[ sort_key ];
 
     NSDictionary *paramDic = @{@"uid":@2100396861, @"access_token":SINA_WEIBO_ACCESSTOKEN};

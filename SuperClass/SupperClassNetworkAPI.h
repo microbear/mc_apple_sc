@@ -7,7 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "UserInfo_coredata.h"
+#import "UserInfo.h"
+#import "Status.h"
+
 #define  SINA_WEIBO_USERID      @"2100396861"
 #define  SINA_WEIBO_ACCESSTOKEN @"2.00jKDJSC9UyzcEc62f3a99c8aLvbmB"
 
