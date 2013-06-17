@@ -53,10 +53,31 @@ static SupperClassNetworkAPI *sharedInstance;
 
 }
 
+-(NSFetchedResultsController *)fetchResult:(NSString *)entityName sortKey:(NSString *)sortKey
+{
+    //creat fetch request
+    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:entityName];
+    NSSortDescriptor *sortWithUniqueID = [NSSortDescriptor sortDescriptorWithKey:sortKey ascending:YES];
+    fetchRequest.sortDescriptors = @[sortWithUniqueID];
+    NSError *error = nil;
+    NSFetchedResultsController *fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
+                                                                                               managedObjectContext:[RKManagedObjectStore defaultStore].mainQueueManagedObjectContext
+                                                                                                 sectionNameKeyPath:nil
+                                                                                                          cacheName:nil];
+    BOOL fetchSuccessful = [fetchedResultsController performFetch:&error];
+    if (! fetchSuccessful)
+    {
+        RKLogError(@"Failed to fetch entity:%@ at path:'%@' error:%@", entityName,RKApplicationDataDirectory(), error);
+        return nil;
+    }
+    return fetchedResultsController;
 
+}
 
 -(void)loadObject:(NSString *)entityName sort_key:(NSString *)sortKey atPath:(NSString *)path withMapping:(RKEntityMapping *)mapping param:(NSDictionary *)paramDic complete:(void(^)(BOOL complete, NSFetchedResultsController* fetchResultController))completeHandle
 {
+
+    //configure RKObjectManager
     NSIndexSet *statusCodes = RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful); // Anything in 2xx
     RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:mapping pathPattern:nil keyPath:nil statusCodes:statusCodes];
     
@@ -64,31 +85,15 @@ static SupperClassNetworkAPI *sharedInstance;
     
     [[RKObjectManager sharedManager] getObjectsAtPath:path parameters:paramDic success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         
-        NSLog(@"load entity:%@ success\n", entityName);
-        NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:entityName];
-        NSSortDescriptor *sortWithUniqueID = [NSSortDescriptor sortDescriptorWithKey:sortKey ascending:YES];
-        fetchRequest.sortDescriptors = @[sortWithUniqueID];
-        
-        NSError *error = nil;
-        NSFetchedResultsController *fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
-                                                                            managedObjectContext:[RKManagedObjectStore defaultStore].mainQueueManagedObjectContext
-                                                                              sectionNameKeyPath:nil
-                                                                                       cacheName:nil];
-        BOOL fetchSuccessful = [fetchedResultsController performFetch:&error];
-        NSLog(@"count = %d", [[fetchedResultsController fetchedObjects] count]);
-        NSAssert([[fetchedResultsController fetchedObjects] count], @"Seeding didn't work...");
-        if (! fetchSuccessful)
-        {
-            if (! fetchSuccessful) {
-                RKLogError(@"Failed to fetch entity:%@ at path:'%@' error:%@", entityName,RKApplicationDataDirectory(), error);
-            }
-        }
+        NSLog(@"load entity:%@ from network success!\n", entityName);
+        NSFetchedResultsController *fetchedResultsController = [self fetchResult:entityName sortKey:sortKey];
         completeHandle(YES, fetchedResultsController);
         
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         
-        NSLog(@"load entity:%@ fail!\n", entityName);
-        
+        NSLog(@"load entity:%@ from network fail! error:%@\n", entityName, error);
+        NSFetchedResultsController *fetchedResultsController = [self fetchResult:entityName sortKey:sortKey];
+        completeHandle(YES, fetchedResultsController);        
         
     }];
 
