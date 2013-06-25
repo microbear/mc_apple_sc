@@ -27,6 +27,7 @@
 		A5B2CD1C17564CFD007BE78F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B2CCF717564CFD007BE78F /* Foundation.framework */; };
 		A5B2CD2417564CFD007BE78F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A5B2CD2217564CFD007BE78F /* InfoPlist.strings */; };
 		A5B2CD2717564CFD007BE78F /* SuperClassTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B2CD2617564CFD007BE78F /* SuperClassTests.m */; };
+		A5C777C917752A890077F44C /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C777C817752A890077F44C /* MBProgressHUD.m */; };
 		A5E9C7A7176A01BA0069A689 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E9C7A5176A01BA0069A689 /* AppDelegate.m */; };
 		A5E9C7A8176A01BA0069A689 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E9C7A6176A01BA0069A689 /* ViewController.m */; };
 		A5EF7AA717577A1100598899 /* DouBanConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5EF7A7D17577A1000598899 /* DouBanConnection.framework */; };
@@ -78,6 +79,8 @@
 		A5EF7AED1757819600598899 /* DispatchQueueLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = A5EF7AE31757819600598899 /* DispatchQueueLogFormatter.m */; };
 		A5EF7AEE1757819600598899 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = A5EF7AE41757819600598899 /* README.txt */; };
 		A5EF7AEF1757819600598899 /* MyCustomLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = A5EF7AE61757819600598899 /* MyCustomLogFormatter.m */; };
+		A5EFF4201773BC1D0031E2DF /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5EFF41E1773BC1D0031E2DF /* RegisterViewController.m */; };
+		A5EFF4211773BC1D0031E2DF /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5EFF41F1773BC1D0031E2DF /* RegisterViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -120,6 +123,8 @@
 		A5B2CD2317564CFD007BE78F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A5B2CD2517564CFD007BE78F /* SuperClassTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SuperClassTests.h; sourceTree = "<group>"; };
 		A5B2CD2617564CFD007BE78F /* SuperClassTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SuperClassTests.m; sourceTree = "<group>"; };
+		A5C777C717752A890077F44C /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		A5C777C817752A890077F44C /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		A5E9C7A5176A01BA0069A689 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		A5E9C7A6176A01BA0069A689 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		A5EF7A7D17577A1000598899 /* DouBanConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DouBanConnection.framework; sourceTree = "<group>"; };
@@ -181,6 +186,9 @@
 		A5EF7AE41757819600598899 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
 		A5EF7AE51757819600598899 /* MyCustomLogFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCustomLogFormatter.h; sourceTree = "<group>"; };
 		A5EF7AE61757819600598899 /* MyCustomLogFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCustomLogFormatter.m; sourceTree = "<group>"; };
+		A5EFF41D1773BC1D0031E2DF /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
+		A5EFF41E1773BC1D0031E2DF /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
+		A5EFF41F1773BC1D0031E2DF /* RegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -294,15 +302,17 @@
 		A5B2CCFB17564CFD007BE78F /* SuperClass */ = {
 			isa = PBXGroup;
 			children = (
+				A5F3314E17733A5900BE93FA /* NetworkAPI */,
 				A52BC2401759FE1E0044E26C /* DataObject */,
 				A5B2CD0417564CFD007BE78F /* AppDelegate.h */,
 				A5E9C7A5176A01BA0069A689 /* AppDelegate.m */,
 				A5B2CD0D17564CFD007BE78F /* ViewController.h */,
 				A5E9C7A6176A01BA0069A689 /* ViewController.m */,
-				A50E6E5A176581CE0081F637 /* SupperClassNetworkAPI.h */,
-				A50E6E5B176581CF0081F637 /* SupperClassNetworkAPI.m */,
 				A5B2CD1017564CFD007BE78F /* ViewController.xib */,
 				A5B2CCFC17564CFD007BE78F /* Supporting Files */,
+				A5EFF41D1773BC1D0031E2DF /* RegisterViewController.h */,
+				A5EFF41E1773BC1D0031E2DF /* RegisterViewController.m */,
+				A5EFF41F1773BC1D0031E2DF /* RegisterViewController.xib */,
 			);
 			path = SuperClass;
 			sourceTree = "<group>";
@@ -340,9 +350,19 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		A5C777C617752A890077F44C /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				A5C777C717752A890077F44C /* MBProgressHUD.h */,
+				A5C777C817752A890077F44C /* MBProgressHUD.m */,
+			);
+			path = MBProgressHUD;
+			sourceTree = "<group>";
+		};
 		A5EF7A7A17577A1000598899 /* vender */ = {
 			isa = PBXGroup;
 			children = (
+				A5C777C617752A890077F44C /* MBProgressHUD */,
 				A5EF7AD41757819600598899 /* Lumberjack */,
 				A5EF7A7B17577A1000598899 /* ShareSDK_v2.1.1 */,
 			);
@@ -465,6 +485,15 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		A5F3314E17733A5900BE93FA /* NetworkAPI */ = {
+			isa = PBXGroup;
+			children = (
+				A50E6E5A176581CE0081F637 /* SupperClassNetworkAPI.h */,
+				A50E6E5B176581CF0081F637 /* SupperClassNetworkAPI.m */,
+			);
+			name = NetworkAPI;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -551,6 +580,7 @@
 				A5EF7AC617577A1100598899 /* ShareSDKiPhoneDefaultShareViewUI.bundle in Resources */,
 				A5EF7AC817577A1100598899 /* ShareSDKiPhoneSimpleShareViewUI.bundle in Resources */,
 				A5EF7AEE1757819600598899 /* README.txt in Resources */,
+				A5EFF4211773BC1D0031E2DF /* RegisterViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -628,6 +658,8 @@
 				A5B25232176DC68500046F3A /* SuperClass.xcdatamodeld in Sources */,
 				A5B2523C176DCB0E00046F3A /* UserInfo.m in Sources */,
 				A5B2523F176DCB0F00046F3A /* Status.m in Sources */,
+				A5EFF4201773BC1D0031E2DF /* RegisterViewController.m in Sources */,
+				A5C777C917752A890077F44C /* MBProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
