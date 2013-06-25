@@ -74,7 +74,7 @@ static SupperClassNetworkAPI *sharedInstance;
 
 }
 
--(void)loadObject:(NSString *)entityName sort_key:(NSString *)sortKey atPath:(NSString *)path withMapping:(RKEntityMapping *)mapping param:(NSDictionary *)paramDic complete:(void(^)(BOOL complete, NSFetchedResultsController* fetchResultController))completeHandle
+-(void)loadObject:(NSString *)entityName sort_key:(NSString *)sortKey atPath:(NSString *)path withMapping:(RKEntityMapping *)mapping param:(NSDictionary *)paramDic fail_fetch:(BOOL)still_fetch complete:(void(^)(BOOL complete, BOOL success, NSFetchedResultsController* fetchResultController))completeHandle
 {
 
     //configure RKObjectManager
@@ -87,21 +87,47 @@ static SupperClassNetworkAPI *sharedInstance;
         
         NSLog(@"load entity:%@ from network success!\n", entityName);
         NSFetchedResultsController *fetchedResultsController = [self fetchResult:entityName sortKey:sortKey];
-        completeHandle(YES, fetchedResultsController);
+        completeHandle(YES, YES,fetchedResultsController);
         
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         
         NSLog(@"load entity:%@ from network fail! error:%@\n", entityName, error);
-        NSFetchedResultsController *fetchedResultsController = [self fetchResult:entityName sortKey:sortKey];
-        completeHandle(YES, fetchedResultsController);        
+        NSFetchedResultsController *fetchedResultsController = nil;
+        if (still_fetch)
+        {
+            fetchedResultsController = [self fetchResult:entityName sortKey:sortKey];
+
+        }
+        completeHandle(YES, NO, fetchedResultsController);
         
     }];
 
 
 }
 
++ (void) loadUserInfo:(NSDictionary *)paramDic completeBlock:(void(^)(BOOL complete, BOOL success, NSFetchedResultsController* fetchResultController))completeHandle
+{
+    //creat responseDescriptor
+    NSString *entity_name = @"UserInfo";
+    NSString *sort_key = @"userID";
+    RKEntityMapping *mapping = [RKEntityMapping mappingForEntityForName:entity_name inManagedObjectStore:[RKManagedObjectStore defaultStore]];
+    [mapping addAttributeMappingsFromDictionary:@{ @"id": @"userID", @"name": @"username" }];
+    
+    RKEntityMapping* statusMapping = [RKEntityMapping mappingForEntityForName:@"Status" inManagedObjectStore:[RKManagedObjectStore defaultStore]];
+    [statusMapping addAttributeMappingsFromArray:@[ @"created_at", @"text" ]];
+    
+    [mapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"status"
+                                                                            toKeyPath:@"status"
+                                                                          withMapping:statusMapping]];
+    mapping.identificationAttributes = @[ sort_key ];
+    
+    //NSDictionary *paramDic = @{@"uid":@2100396861, @"access_token":SINA_WEIBO_ACCESSTOKEN};
+    SupperClassNetworkAPI *instance = [SupperClassNetworkAPI sharedInstance];
+    [instance loadObject:entity_name sort_key:sort_key atPath:USER_INFO_RELATIVE_PATH withMapping:mapping param:paramDic fail_fetch:NO complete:completeHandle];
+    
+}
 
-- (void) loadUserInfo:(void(^)(BOOL complete, NSFetchedResultsController* fetchResultController))completeHandle
++ (void) loadUserInfo:(void(^)(BOOL complete, BOOL success, NSFetchedResultsController* fetchResultController))completeHandle
 {
     //creat responseDescriptor
     NSString *entity_name = @"UserInfo";
@@ -118,8 +144,9 @@ static SupperClassNetworkAPI *sharedInstance;
     mapping.identificationAttributes = @[ sort_key ];
 
     NSDictionary *paramDic = @{@"uid":@2100396861, @"access_token":SINA_WEIBO_ACCESSTOKEN};
+    SupperClassNetworkAPI *instance = [SupperClassNetworkAPI sharedInstance];
 
-    [self loadObject:entity_name sort_key:sort_key atPath:USER_INFO_RELATIVE_PATH withMapping:mapping param:paramDic complete:completeHandle];
+    [instance loadObject:entity_name sort_key:sort_key atPath:USER_INFO_RELATIVE_PATH withMapping:mapping param:paramDic fail_fetch:NO complete:completeHandle];
 
 }
 

@@ -13,6 +13,21 @@
 //    #import <Foundation/Foundation.h>
 //#endif
 
+
+#if __IPHONE_OS_VERSION_MIN_REQUIRED
+
+#define USERNAME_MIN_LENGTH 4
+#define USERNAME_MAX_LENGTH 255
+#define PASSWORD_MIN_LENGTH 1
+#define PASSWORD_MAX_LENGTH 20
+
+
+
+
+
+#else
+#endif
+
 #if __IPHONE_OS_VERSION_MIN_REQUIRED
     #import <SystemConfiguration/SystemConfiguration.h>
     #import <MobileCoreServices/MobileCoreServices.h>

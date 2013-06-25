@@ -29,7 +29,8 @@
 + (void) initialize;
 
 
-- (void) loadUserInfo:(void(^)(BOOL complete, NSFetchedResultsController* fetchResultController))completeHandle;
++ (void) loadUserInfo:(void(^)(BOOL complete, BOOL success, NSFetchedResultsController* fetchResultController))completeHandle;
++ (void) loadUserInfo:(NSDictionary *)paramDic completeBlock:(void(^)(BOOL complete, BOOL success, NSFetchedResultsController* fetchResultController))completeHandle;
 
 //- (void) fetchUserInfo;
 //- (void) getUserInfo;

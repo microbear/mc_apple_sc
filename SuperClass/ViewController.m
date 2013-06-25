@@ -10,8 +10,15 @@
 #import "UserInfo.h"
 #import "Status.h"
 #import "SupperClassNetworkAPI.h"
+#import "RegisterViewController.h"
+#import "MBProgressHUD.h"
 @interface ViewController ()
-
+{
+    
+}
+@property (nonatomic, strong) MBProgressHUD *HUD;
+@property (nonatomic, copy) NSString *username;
+@property (nonatomic, copy) NSString *password;
 @end
 
 @implementation ViewController
@@ -19,16 +26,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [[SupperClassNetworkAPI sharedInstance] loadUserInfo:^(BOOL complete, NSFetchedResultsController *result_controller){
-        if (complete)
-        {
-            self.fetchedResultsController = result_controller;
-            self.fetchedResultsController.delegate = self;
-            NSLog(@"fetched userinfo count = %d", [[self.fetchedResultsController fetchedObjects] count]);
-            UserInfo *user = (UserInfo *)[[self.fetchedResultsController fetchedObjects] lastObject];
-            NSLog(@"name:%@ status:%@", user.username, user.status.text);
-        }
-    }];
+    self.password_textfield.delegate = self;
+    self.username_textfield.delegate = self;
+//    [[SupperClassNetworkAPI sharedInstance] loadUserInfo:^(BOOL complete, NSFetchedResultsController *result_controller){
+//        if (complete)
+//        {
+//            self.fetchedResultsController = result_controller;
+//            self.fetchedResultsController.delegate = self;
+//            NSLog(@"fetched userinfo count = %d", [[self.fetchedResultsController fetchedObjects] count]);
+//            UserInfo *user = (UserInfo *)[[self.fetchedResultsController fetchedObjects] lastObject];
+//            NSLog(@"name:%@ status:%@", user.username, user.status.text);
+//        }
+//    }];
     //[self test_RestKit_coredata];
 	// Do any additional setup after loading the view, typically from a nib.
 }
@@ -36,10 +45,9 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    //merge in different file
-    //merge in same file
-    // Dispose of any resources that can be recreated.
 }
+
+#pragma mark MBProgressHUD
 
 
 #pragma mark NSFetchedResultsControllerDelegate methods
@@ -48,6 +56,93 @@
 {
     //[self.tableView reloadData];
 }
+
+
+
+#pragma mark outlet action
+
+
+- (IBAction)register_user:(UIButton *)sender
+{
+    RegisterViewController *register_viewcontroller = [[RegisterViewController alloc] initWithNibName:nil bundle:nil];
+    [self presentViewController:register_viewcontroller animated:YES completion:nil];
+}
+
+
+- (IBAction)login:(UIButton *)sender
+{
+    self.HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    self.HUD.labelText = @"正在连接网络";
+
+    NSDictionary *user_params = @{@"uid":@2100396861, @"access_token":SINA_WEIBO_ACCESSTOKEN};
+    [SupperClassNetworkAPI loadUserInfo:user_params completeBlock:^(BOOL complete, BOOL success, NSFetchedResultsController *fetchResultController) {
+        if (complete)
+        {
+            if (success)
+            {
+                self.fetchedResultsController = fetchResultController;
+                self.fetchedResultsController.delegate = self;
+                NSLog(@"fetched userinfo count = %d", [[self.fetchedResultsController fetchedObjects] count]);
+                UserInfo *user = (UserInfo *)[[self.fetchedResultsController fetchedObjects] lastObject];
+                NSLog(@"name:%@ status:%@", user.username, user.status.text);
+
+            }
+            else
+            {
+                self.HUD.labelText = @"网络不给力!";
+                [self.HUD hide:YES afterDelay:1.5];
+                
+            }
+
+        }
+    }];
+}
+
+
+
+#pragma mark UITextfield delegate
+
+-(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    //判断用户名是否太长
+    if (textField == self.username_textfield && textField.text.length >= USERNAME_MAX_LENGTH && range.length == 0) {
+        return NO;
+    }
+    //判断密码是否太长
+    if (textField == self.password_textfield && textField.text.length >= PASSWORD_MAX_LENGTH && range.length == 0) {
+        return NO;
+    }
+    
+    return YES;
+
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+	if (textField == self.username_textfield) {
+		[textField resignFirstResponder];
+		[self.password_textfield becomeFirstResponder];
+	}
+	else if (textField == self.password_textfield)
+    {
+		[textField resignFirstResponder];
+        [self login:nil];
+	}
+    return YES;
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    
+    [self.username_textfield resignFirstResponder];
+    [self.password_textfield resignFirstResponder];
+}
+
+
+
+
+
+
+
+
 
 
 #pragma -mark test
