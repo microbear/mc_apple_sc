@@ -10,6 +10,9 @@
 
 @implementation SupperClassNetworkAPI
 
+@synthesize HUD = _HUD;
+
+
 static SupperClassNetworkAPI *sharedInstance;
 
 + (SupperClassNetworkAPI *)sharedInstance
@@ -44,9 +47,9 @@ static SupperClassNetworkAPI *sharedInstance;
         //creat manager
         RKObjectManager *manager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:MAIN_PATH]];
         manager.managedObjectStore = managedObjectStore;
-        
         managedObjectStore.managedObjectCache = [[RKInMemoryManagedObjectCache alloc] initWithManagedObjectContext:managedObjectStore.persistentStoreManagedObjectContext];
-    
+        
+        //[AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
         sharedInstance = [[SupperClassNetworkAPI alloc] init];
     }
 
@@ -77,6 +80,8 @@ static SupperClassNetworkAPI *sharedInstance;
 -(void)loadObject:(NSString *)entityName sort_key:(NSString *)sortKey atPath:(NSString *)path withMapping:(RKEntityMapping *)mapping param:(NSDictionary *)paramDic fail_fetch:(BOOL)still_fetch complete:(void(^)(BOOL complete, BOOL success, NSFetchedResultsController* fetchResultController))completeHandle
 {
 
+    [MBProgressHUD showHUDAddedTo:[self applicationWindow] animated:YES];
+
     //configure RKObjectManager
     NSIndexSet *statusCodes = RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful); // Anything in 2xx
     RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:mapping pathPattern:nil keyPath:nil statusCodes:statusCodes];
@@ -85,20 +90,34 @@ static SupperClassNetworkAPI *sharedInstance;
     
     [[RKObjectManager sharedManager] getObjectsAtPath:path parameters:paramDic success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         
+        [MBProgressHUD hideHUDForView:[self applicationWindow] animated:YES];
+        
         NSLog(@"load entity:%@ from network success!\n", entityName);
         NSFetchedResultsController *fetchedResultsController = [self fetchResult:entityName sortKey:sortKey];
         completeHandle(YES, YES,fetchedResultsController);
         
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         
-        NSLog(@"load entity:%@ from network fail! error:%@\n", entityName, error);
-        NSFetchedResultsController *fetchedResultsController = nil;
-        if (still_fetch)
+        if (operation.HTTPRequestOperation.response.statusCode == 400)
         {
-            fetchedResultsController = [self fetchResult:entityName sortKey:sortKey];
+            [MBProgressHUD hideHUDForView:[self applicationWindow] animated:YES];
+
+            NSLog(@"load entity:%@ from network fail! error:%@\n", entityName, error);
+            NSFetchedResultsController *fetchedResultsController = nil;
+            if (still_fetch)
+            {
+                fetchedResultsController = [self fetchResult:entityName sortKey:sortKey];
+                
+            }
+            completeHandle(YES, NO, fetchedResultsController);
 
         }
-        completeHandle(YES, NO, fetchedResultsController);
+        else
+        {
+            [MBProgressHUD hideHUDForView:[self applicationWindow] animated:YES];
+
+            [self showInformation:nil info:@"网络连接错误！"];
+        }
         
     }];
 
@@ -148,6 +167,46 @@ static SupperClassNetworkAPI *sharedInstance;
 
     [instance loadObject:entity_name sort_key:sort_key atPath:USER_INFO_RELATIVE_PATH withMapping:mapping param:paramDic fail_fetch:NO complete:completeHandle];
 
+}
+
+#pragma -mark network indicator
+
+-(UIView *) applicationWindow
+{
+    return [[UIApplication sharedApplication].delegate window];
+}
+- (void)showInformation:(UIView *)view info:(NSString *)info {
+    if (self.HUD) {
+        [self.HUD removeFromSuperview];
+    }
+    
+    if (view == nil) {
+        view = [self applicationWindow];
+    }
+    
+    if (self.HUD == nil) {
+        self.HUD = [[MBProgressHUD alloc] initWithView:view];
+        
+        
+        if ([info length] > 12) {
+            self.HUD.detailsLabelText = info;
+            self.HUD.detailsLabelFont = [UIFont systemFontOfSize:16];
+        }
+        else {
+            self.HUD.labelText = info;
+            self.HUD.labelFont = [UIFont systemFontOfSize:18];
+        }
+    }
+    
+    if ([view isKindOfClass:[UIWindow class]]) {
+        [view addSubview:self.HUD];
+    }
+    else {
+        [view.window addSubview:self.HUD];
+    }
+    
+    [self.HUD show:YES];
+    [self.HUD hide:YES afterDelay:1.0];
 }
 
 

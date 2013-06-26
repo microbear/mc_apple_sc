@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "UserInfo.h"
 #import "Status.h"
+#import "MBProgressHUD.h"
 
 #define  SINA_WEIBO_USERID      @"2100396861"
 #define  SINA_WEIBO_ACCESSTOKEN @"2.00jKDJSC9UyzcEc62f3a99c8aLvbmB"
@@ -20,8 +21,8 @@
 @interface SupperClassNetworkAPI : NSObject
 {
 }
+@property (nonatomic, strong) MBProgressHUD *HUD;
 
-//@property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 
 + (SupperClassNetworkAPI *)sharedInstance;
 

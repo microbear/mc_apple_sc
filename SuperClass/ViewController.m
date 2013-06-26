@@ -11,17 +11,16 @@
 #import "Status.h"
 #import "SupperClassNetworkAPI.h"
 #import "RegisterViewController.h"
-#import "MBProgressHUD.h"
 @interface ViewController ()
 {
     
 }
-@property (nonatomic, strong) MBProgressHUD *HUD;
 @property (nonatomic, copy) NSString *username;
 @property (nonatomic, copy) NSString *password;
 @end
 
 @implementation ViewController
+
 
 - (void)viewDidLoad
 {
@@ -69,33 +68,40 @@
 }
 
 
-- (IBAction)login:(UIButton *)sender
+-(void) load_userinfo:(NSDictionary *)param
 {
-    self.HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    self.HUD.labelText = @"正在连接网络";
-
-    NSDictionary *user_params = @{@"uid":@2100396861, @"access_token":SINA_WEIBO_ACCESSTOKEN};
-    [SupperClassNetworkAPI loadUserInfo:user_params completeBlock:^(BOOL complete, BOOL success, NSFetchedResultsController *fetchResultController) {
+    [SupperClassNetworkAPI loadUserInfo:param completeBlock:^(BOOL complete, BOOL success, NSFetchedResultsController *fetchResultController) {
         if (complete)
         {
             if (success)
             {
+
                 self.fetchedResultsController = fetchResultController;
                 self.fetchedResultsController.delegate = self;
                 NSLog(@"fetched userinfo count = %d", [[self.fetchedResultsController fetchedObjects] count]);
                 UserInfo *user = (UserInfo *)[[self.fetchedResultsController fetchedObjects] lastObject];
                 NSLog(@"name:%@ status:%@", user.username, user.status.text);
-
+                
             }
             else
             {
-                self.HUD.labelText = @"网络不给力!";
-                [self.HUD hide:YES afterDelay:1.5];
-                
-            }
 
+            }
+            
         }
     }];
+
+}
+
+- (IBAction)login:(UIButton *)sender
+{
+
+    self.username = self.username_textfield.text;
+    NSNumber *uid = [NSNumber numberWithInt:[self.username intValue]];
+    NSDictionary *user_params = @{@"uid":uid, @"access_token":SINA_WEIBO_ACCESSTOKEN};
+    [self load_userinfo:user_params];
+    
+    
 }
 
 
