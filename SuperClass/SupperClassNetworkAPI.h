@@ -23,6 +23,7 @@
 }
 @property (nonatomic, strong) MBProgressHUD *HUD;
 
++ (void)showInformation:(UIView *)view info:(NSString *)info;
 
 + (SupperClassNetworkAPI *)sharedInstance;
 

@@ -83,10 +83,6 @@
                 NSLog(@"name:%@ status:%@", user.username, user.status.text);
                 
             }
-            else
-            {
-
-            }
             
         }
     }];

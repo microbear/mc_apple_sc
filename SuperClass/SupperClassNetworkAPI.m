@@ -109,14 +109,18 @@ static SupperClassNetworkAPI *sharedInstance;
                 fetchedResultsController = [self fetchResult:entityName sortKey:sortKey];
                 
             }
+        
             completeHandle(YES, NO, fetchedResultsController);
+            
+            [SupperClassNetworkAPI showInformation:nil info:@"用户名或密码错误！"];
+
 
         }
         else
         {
             [MBProgressHUD hideHUDForView:[self applicationWindow] animated:YES];
 
-            [self showInformation:nil info:@"网络连接错误！"];
+            [SupperClassNetworkAPI showInformation:nil info:@"网络连接错误！"];
         }
         
     }];
@@ -175,38 +179,41 @@ static SupperClassNetworkAPI *sharedInstance;
 {
     return [[UIApplication sharedApplication].delegate window];
 }
-- (void)showInformation:(UIView *)view info:(NSString *)info {
-    if (self.HUD) {
-        [self.HUD removeFromSuperview];
++ (void)showInformation:(UIView *)view info:(NSString *)info
+{
+    SupperClassNetworkAPI *instance = [SupperClassNetworkAPI sharedInstance];
+
+    if (instance.HUD) {
+        [instance.HUD removeFromSuperview];
     }
     
     if (view == nil) {
-        view = [self applicationWindow];
+        view = [instance applicationWindow];
     }
     
-    if (self.HUD == nil) {
-        self.HUD = [[MBProgressHUD alloc] initWithView:view];
+    if (instance.HUD == nil) {
+        instance.HUD = [[MBProgressHUD alloc] initWithView:view];
         
         
         if ([info length] > 12) {
-            self.HUD.detailsLabelText = info;
-            self.HUD.detailsLabelFont = [UIFont systemFontOfSize:16];
+            instance.HUD.detailsLabelText = info;
+            instance.HUD.detailsLabelFont = [UIFont systemFontOfSize:16];
         }
         else {
-            self.HUD.labelText = info;
-            self.HUD.labelFont = [UIFont systemFontOfSize:18];
+            instance.HUD.labelText = info;
+            instance.HUD.labelFont = [UIFont systemFontOfSize:18];
         }
     }
     
     if ([view isKindOfClass:[UIWindow class]]) {
-        [view addSubview:self.HUD];
+        [view addSubview:instance.HUD];
     }
     else {
-        [view.window addSubview:self.HUD];
+        [view.window addSubview:instance.HUD];
     }
     
-    [self.HUD show:YES];
-    [self.HUD hide:YES afterDelay:1.0];
+    [instance.HUD show:YES];
+    [instance.HUD hide:YES afterDelay:1.0];
 }
 
 
