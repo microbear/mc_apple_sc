@@ -11,6 +11,8 @@
 #import "Status.h"
 #import "SupperClassNetworkAPI.h"
 #import "RegisterViewController.h"
+#import "CourseCategoryViewController.h"
+
 @interface ViewController ()
 {
     
@@ -97,7 +99,9 @@
     NSDictionary *user_params = @{@"uid":uid, @"access_token":SINA_WEIBO_ACCESSTOKEN};
     [self load_userinfo:user_params];
     
-    
+    CourseCategoryViewController *courseCategoryViewController = [[CourseCategoryViewController alloc] initWithNibName:nil bundle:nil];
+    [self presentViewController:courseCategoryViewController animated:YES completion:nil];
+
 }
 
 

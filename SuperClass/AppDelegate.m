@@ -12,8 +12,18 @@
 //modified in the main branch
 @implementation AppDelegate
 
+static void uncaughtExceptionHandler(NSException *exception)
+{
+    NSLog(@"CRASH: %@", exception);
+    NSLog(@"Stack Trace: %@", [exception callStackSymbols]);    
+    
+}
+
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
+    
     //DDlog initial
     [DDLog addLogger:[DDTTYLogger sharedInstance]];
     [[DDTTYLogger sharedInstance] setLogFormatter:[[MyCustomLogFormatter alloc] init]];
