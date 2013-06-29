@@ -28,6 +28,10 @@
 		A5B2CD2417564CFD007BE78F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A5B2CD2217564CFD007BE78F /* InfoPlist.strings */; };
 		A5B2CD2717564CFD007BE78F /* SuperClassTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B2CD2617564CFD007BE78F /* SuperClassTests.m */; };
 		A5C777C917752A890077F44C /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C777C817752A890077F44C /* MBProgressHUD.m */; };
+		A5DF3B51177EB10D00DECF8C /* CourseCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5DF3B4F177EB10D00DECF8C /* CourseCategoryViewController.m */; };
+		A5DF3B52177EB10D00DECF8C /* CourseCategoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5DF3B50177EB10D00DECF8C /* CourseCategoryViewController.xib */; };
+		A5DF3B55177EC53E00DECF8C /* CourseCategoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A5DF3B54177EC53D00DECF8C /* CourseCategoryTableViewCell.m */; };
+		A5DF3B57177EC5B200DECF8C /* CourseCategoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5DF3B56177EC5B100DECF8C /* CourseCategoryTableViewCell.xib */; };
 		A5E9C7A7176A01BA0069A689 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E9C7A5176A01BA0069A689 /* AppDelegate.m */; };
 		A5E9C7A8176A01BA0069A689 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E9C7A6176A01BA0069A689 /* ViewController.m */; };
 		A5EF7AA717577A1100598899 /* DouBanConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5EF7A7D17577A1000598899 /* DouBanConnection.framework */; };
@@ -125,6 +129,12 @@
 		A5B2CD2617564CFD007BE78F /* SuperClassTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SuperClassTests.m; sourceTree = "<group>"; };
 		A5C777C717752A890077F44C /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		A5C777C817752A890077F44C /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		A5DF3B4E177EB10D00DECF8C /* CourseCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseCategoryViewController.h; sourceTree = "<group>"; };
+		A5DF3B4F177EB10D00DECF8C /* CourseCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseCategoryViewController.m; sourceTree = "<group>"; };
+		A5DF3B50177EB10D00DECF8C /* CourseCategoryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CourseCategoryViewController.xib; sourceTree = "<group>"; };
+		A5DF3B53177EC53D00DECF8C /* CourseCategoryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseCategoryTableViewCell.h; sourceTree = "<group>"; };
+		A5DF3B54177EC53D00DECF8C /* CourseCategoryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseCategoryTableViewCell.m; sourceTree = "<group>"; };
+		A5DF3B56177EC5B100DECF8C /* CourseCategoryTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CourseCategoryTableViewCell.xib; sourceTree = "<group>"; };
 		A5E9C7A5176A01BA0069A689 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		A5E9C7A6176A01BA0069A689 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		A5EF7A7D17577A1000598899 /* DouBanConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DouBanConnection.framework; sourceTree = "<group>"; };
@@ -309,10 +319,16 @@
 				A5B2CD0D17564CFD007BE78F /* ViewController.h */,
 				A5E9C7A6176A01BA0069A689 /* ViewController.m */,
 				A5B2CD1017564CFD007BE78F /* ViewController.xib */,
-				A5B2CCFC17564CFD007BE78F /* Supporting Files */,
 				A5EFF41D1773BC1D0031E2DF /* RegisterViewController.h */,
 				A5EFF41E1773BC1D0031E2DF /* RegisterViewController.m */,
 				A5EFF41F1773BC1D0031E2DF /* RegisterViewController.xib */,
+				A5DF3B4E177EB10D00DECF8C /* CourseCategoryViewController.h */,
+				A5DF3B4F177EB10D00DECF8C /* CourseCategoryViewController.m */,
+				A5DF3B50177EB10D00DECF8C /* CourseCategoryViewController.xib */,
+				A5DF3B53177EC53D00DECF8C /* CourseCategoryTableViewCell.h */,
+				A5DF3B54177EC53D00DECF8C /* CourseCategoryTableViewCell.m */,
+				A5DF3B56177EC5B100DECF8C /* CourseCategoryTableViewCell.xib */,
+				A5B2CCFC17564CFD007BE78F /* Supporting Files */,
 			);
 			path = SuperClass;
 			sourceTree = "<group>";
@@ -581,6 +597,8 @@
 				A5EF7AC817577A1100598899 /* ShareSDKiPhoneSimpleShareViewUI.bundle in Resources */,
 				A5EF7AEE1757819600598899 /* README.txt in Resources */,
 				A5EFF4211773BC1D0031E2DF /* RegisterViewController.xib in Resources */,
+				A5DF3B52177EB10D00DECF8C /* CourseCategoryViewController.xib in Resources */,
+				A5DF3B57177EC5B200DECF8C /* CourseCategoryTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -660,6 +678,8 @@
 				A5B2523F176DCB0F00046F3A /* Status.m in Sources */,
 				A5EFF4201773BC1D0031E2DF /* RegisterViewController.m in Sources */,
 				A5C777C917752A890077F44C /* MBProgressHUD.m in Sources */,
+				A5DF3B51177EB10D00DECF8C /* CourseCategoryViewController.m in Sources */,
+				A5DF3B55177EC53E00DECF8C /* CourseCategoryTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
