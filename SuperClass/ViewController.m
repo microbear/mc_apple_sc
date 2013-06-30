@@ -84,6 +84,10 @@
                 UserInfo *user = (UserInfo *)[[self.fetchedResultsController fetchedObjects] lastObject];
                 NSLog(@"name:%@ status:%@", user.username, user.status.text);
                 
+                CourseCategoryViewController *courseCategoryViewController = [[CourseCategoryViewController alloc] initWithNibName:nil bundle:nil];
+                courseCategoryViewController.fetchedResultsController = self.fetchedResultsController;
+                [self presentViewController:courseCategoryViewController animated:YES completion:nil];
+                
             }
             
         }
@@ -95,12 +99,10 @@
 {
 
     self.username = self.username_textfield.text;
-    NSNumber *uid = [NSNumber numberWithInt:[self.username intValue]];
-    NSDictionary *user_params = @{@"uid":uid, @"access_token":SINA_WEIBO_ACCESSTOKEN};
+    //NSNumber *uid = [NSNumber numberWithInt:[self.username intValue]];
+    NSDictionary *user_params = @{@"uid":SINA_WEIBO_USERID, @"access_token":SINA_WEIBO_ACCESSTOKEN};
     [self load_userinfo:user_params];
     
-    CourseCategoryViewController *courseCategoryViewController = [[CourseCategoryViewController alloc] initWithNibName:nil bundle:nil];
-    [self presentViewController:courseCategoryViewController animated:YES completion:nil];
 
 }
 

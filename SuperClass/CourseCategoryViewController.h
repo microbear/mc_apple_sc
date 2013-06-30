@@ -17,5 +17,6 @@
 
 @property (nonatomic, retain) IBOutlet CourseCategoryTableViewCell *tmpCell;
 
+@property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 
 @end

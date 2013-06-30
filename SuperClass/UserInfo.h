@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
-
-@class Status;
+#import "Status.h"
+//@class Status;
 
 @interface UserInfo : NSManagedObject
 

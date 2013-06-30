@@ -7,12 +7,11 @@
 //
 
 #import "CourseCategoryViewController.h"
-
+#import "UserInfo.h"
 @interface CourseCategoryViewController ()
 
 @property (nonatomic, strong) UINib *cell_nib;
 
-@property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 
 @end
 
@@ -32,6 +31,9 @@
     [super viewDidLoad];
     self.category_tableView.delegate = self;
     self.category_tableView.dataSource = self;
+    self.category_tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.background_imageView.backgroundColor = [UIColor grayColor];
+    self.header_imageView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.7];
     self.cell_nib = [UINib nibWithNibName:@"CourseCategoryTableViewCell" bundle:nil];
 }
 
@@ -42,6 +44,17 @@
 
 #pragma mark -UITableViewDelegate
 
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    //return [[self.fetchedResultsController fetchedObjects] count];
+    return 3;
+
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 20.0;
+}
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
@@ -54,13 +67,12 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    return  100;
+    return  70;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    //return [[self.fetchedResultsController fetchedObjects] count];
-    return 3;
+    return 1;
 }
 
 -(NSString *)getNameFromIndex:(int)index
@@ -84,6 +96,13 @@
     return name;
 }
 
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIView *myView = [[UIView alloc] init];
+    myView.backgroundColor = [UIColor clearColor];
+    return myView;
+}
+
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *identifier = @"mycell";
@@ -97,8 +116,11 @@
         
     }
     
-    cell.categoryName_label.text = [self getNameFromIndex:indexPath.row];
-    
+    cell.categoryName_label.text = [self getNameFromIndex:indexPath.section];
+    UserInfo *user = (UserInfo *)[[self.fetchedResultsController fetchedObjects] objectAtIndex:indexPath.row];
+    //NSLog(@"name:%@ status:%@", user.username, user.status.text);
+    cell.studyPoints_label.text = user.status.text;
+
     
     return cell;
 }

@@ -22,10 +22,10 @@
 
 - (void)awakeFromNib
 {
-    
+    self.background_imageView.backgroundColor = [UIColor yellowColor];
     CALayer *layer = [self.background_imageView layer];
     [layer setMasksToBounds:YES];
-    [layer setCornerRadius:30];
+    [layer setCornerRadius:20];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
