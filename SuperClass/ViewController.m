@@ -19,28 +19,26 @@
 }
 @property (nonatomic, copy) NSString *username;
 @property (nonatomic, copy) NSString *password;
+@property (nonatomic, strong) UIImageView *test_imageview;
 @end
 
 @implementation ViewController
-
+@synthesize test_imageview = _test_imageview;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    /*******************for test********************/
+    //[self test_RestKit_coredata];
+    [self test_load_image];
+    /***********************************************/
+    
     self.password_textfield.delegate = self;
     self.username_textfield.delegate = self;
-//    [[SupperClassNetworkAPI sharedInstance] loadUserInfo:^(BOOL complete, NSFetchedResultsController *result_controller){
-//        if (complete)
-//        {
-//            self.fetchedResultsController = result_controller;
-//            self.fetchedResultsController.delegate = self;
-//            NSLog(@"fetched userinfo count = %d", [[self.fetchedResultsController fetchedObjects] count]);
-//            UserInfo *user = (UserInfo *)[[self.fetchedResultsController fetchedObjects] lastObject];
-//            NSLog(@"name:%@ status:%@", user.username, user.status.text);
-//        }
-//    }];
-    //[self test_RestKit_coredata];
-	// Do any additional setup after loading the view, typically from a nib.
+    
+    
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -154,6 +152,24 @@
 
 
 #pragma -mark test
+
+-(void) test_load_image
+{
+    
+    self.test_imageview = [[UIImageView alloc] initWithFrame:CGRectMake(100.0f, 100.0f, 100.0f, 100.0f)];
+    
+    [self.view addSubview:self.test_imageview];
+    
+    [SupperClassNetworkAPI load_image:IMAGE_TEST_URL complete_handle:^(BOOL success, UIImage *image){
+        
+        if (success) {
+            self.test_imageview.image = image;
+        }
+    }];
+
+}
+
+
 -(void) RKTwitterShowAlert:(NSError *)error withTitle:(NSString *)title message:(NSString *)message
 {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title

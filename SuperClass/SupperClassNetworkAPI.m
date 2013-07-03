@@ -283,7 +283,43 @@ static SupperClassNetworkAPI *sharedInstance;
 //
 //}
 
+#pragma -mark post test
+//not test yet
+-(void) post_image
+{
+    NSURL *url = [NSURL URLWithString:@"http://api-base-url.com"];
+    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
+    NSData *imageData = UIImageJPEGRepresentation([UIImage imageNamed:@"avatar.jpg"], 0.5);
+    NSMutableURLRequest *request = [httpClient multipartFormRequestWithMethod:@"POST" path:@"/upload" parameters:nil constructingBodyWithBlock: ^(id <AFMultipartFormData>formData) {
+        [formData appendPartWithFileData:imageData name:@"avatar" fileName:@"avatar.jpg" mimeType:@"image/jpeg"];
+    }];
+    
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    [operation setUploadProgressBlock:^(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite) {
+        NSLog(@"Sent %lld of %lld bytes", totalBytesWritten, totalBytesExpectedToWrite);
+    }];
+    [httpClient enqueueHTTPRequestOperation:operation];
+}
 
++ (void) load_image:(NSString *)url   complete_handle:(void(^)(BOOL success, UIImage *out_image))completeHandle
+{
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
+    
+    //dispatch_queue_t download_queue = dispatch_queue_create("download image", NULL);
+    [imageView setImageWithURLRequest:request placeholderImage:nil success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+        
+        completeHandle(YES, image);
+        
+        
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
+        
+        completeHandle(NO, nil);
+
+        
+    }];
+    
+}
 
 
 

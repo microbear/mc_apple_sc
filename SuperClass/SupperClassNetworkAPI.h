@@ -11,13 +11,13 @@
 #import "Status.h"
 #import "MBProgressHUD.h"
 
-#define  SINA_WEIBO_USERID      @"2100396861"
-#define  SINA_WEIBO_ACCESSTOKEN @"2.00jKDJSC9UyzcEc62f3a99c8aLvbmB"
+#define  SINA_WEIBO_USERID          @"2100396861"
+#define  SINA_WEIBO_ACCESSTOKEN     @"2.00jKDJSC9UyzcEc62f3a99c8aLvbmB"
 
 #define MAIN_PATH                   @"https://api.weibo.com" //服务器主地址
 
 #define USER_INFO_RELATIVE_PATH     @"/2/users/show.json"
-
+#define IMAGE_TEST_URL              @"http://i.imgur.com/r4uwx.jpg"
 @interface SupperClassNetworkAPI : NSObject
 {
 }
@@ -36,5 +36,8 @@
 
 //- (void) fetchUserInfo;
 //- (void) getUserInfo;
+//+(void) get_image:(UIView *)view;
++ (void) load_image:(NSString *)url   complete_handle:(void(^)(BOOL success, UIImage *out_image))completeHandle;
+
 
 @end
